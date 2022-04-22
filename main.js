@@ -30,6 +30,8 @@ Student.prototype.aproaprobarCurso = function (nuevoCurso){
 const juanita = new Student ("juanita",15,["c1","c2"])
 
 //prototipos con las sintaxis de clases
+//esta sintaxis permite que cuando se instancie un objeto no sea obligatorio pasarle los parametros al constructor
+//de forma ordenada
 class Student2 {
     constructor({
         name,
@@ -48,6 +50,8 @@ class Student2 {
     }
 }
 
+//esta sintaxis permite que cuando se instancie un objeto no sea obligatorio pasarle los parametros al constructor
+//de forma ordenada
 const miguelito = new Student2({
     name: "miguel",
     age: 25,
