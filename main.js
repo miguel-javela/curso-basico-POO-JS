@@ -28,3 +28,28 @@ Student.prototype.aproaprobarCurso = function (nuevoCurso){
 }
 
 const juanita = new Student ("juanita",15,["c1","c2"])
+
+//prototipos con las sintaxis de clases
+class Student2 {
+    constructor({
+        name,
+        cursosAprobados=[],
+        age,
+        email
+    }) {
+        this.name = name;
+        this.age = age;
+        this.cursosAprobados = cursosAprobados;
+        this.email = email;
+    }
+
+    aprobarCurso(nuevoCurso){
+        this.cursosAprobados.push(nuevoCurso);
+    }
+}
+
+const miguelito = new Student2({
+    name: "miguel",
+    age: 25,
+    email: "prueba"
+});
