@@ -9,9 +9,42 @@ class LearningPath {
 
 }
 
-const escuelaWeb = new LearningPath();
-const escuelaData = new LearningPath();
-const escuelaVgs = new LearningPath();
+class Course {
+    constructor({
+        name,
+        classes = []
+    }) {
+        this.name = name;
+        this.classes = classes
+    }
+
+}
+
+//escuelas
+const escuelaWeb = new LearningPath({
+    name: "Escuela de desarrollo web",
+    courses: [cursoProgBasica,cursoDefinitivoHTMLO,cursoPracticoHTML]
+});
+const escuelaData = new LearningPath({
+    name: "Escuela de Data Sciente",
+    courses: ["curso DataBusiness","curso Datavi<"]
+});
+const escuelaVgs = new LearningPath({
+    name: "Escuela de video juevos",
+    courses: ["curso unity","curso de unreal"]
+});
+
+//cursos
+const cursoProgBasica = new ({
+    name: "curso gratis de programacion basica"
+})
+const cursoDefinitivoHTMLO = new ({
+    name: "curso definitivo de HTML y CSS"
+})
+const cursoPracticoHTML = new ({
+    name: "curso practico de HTML y CSS"
+})
+
 
 class Student {
   constructor({
