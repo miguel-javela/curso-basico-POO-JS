@@ -1,3 +1,28 @@
+export class PlatziClass {
+    constructor({
+        name,
+        videoId
+    }){
+        this.name = name;
+        this.videoId = videoId
+    }
+    reproducir(){
+        videoPlay(this.videoId)
+    }
+    pausar(){
+        videoStop(this.videoId)
+    }
+}
+
+function videoPlay(id){
+    const urlSecreta = "http"+id;
+    console.log("se esta reproduciendo desde la URL "+urlSecreta)
+}
+function videoStop(id){
+    const urlSecreta = "http"+id;
+    console.log("se pauso desde la URL "+ urlSecreta)
+}
+
 class LearningPath {
     constructor({
         name,
