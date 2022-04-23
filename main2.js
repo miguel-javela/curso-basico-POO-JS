@@ -14,11 +14,31 @@ class Course {
         name,
         classes = []
     }) {
-        this.name = name;
+        this._name = name;//raya al piso indica que no deberia ser llamado desde afuera(privado)
         this.classes = classes
     }
-
+    get name (){
+        return this._name;
+    }
+    set name(nuevoNombre){
+        if(nuevoNombre === "Curso malito"){
+            console.error("no llamar asi")
+        } else {
+            this._name = nuevoNombre;
+        }
+        
+    }
 }
+//cursos
+const cursoProgBasica = new Course({
+    name: "curso gratis de programacion basica"
+});
+const cursoDefinitivoHTMLO = new Course({
+    name: "curso definitivo de HTML y CSS"
+});
+const cursoPracticoHTML = new Course({
+    name: "curso practico de HTML y CSS"
+});
 
 //escuelas
 const escuelaWeb = new LearningPath({
@@ -34,19 +54,7 @@ const escuelaVgs = new LearningPath({
     courses: ["curso unity","curso de unreal"]
 });
 
-//cursos
-const cursoProgBasica = new ({
-    name: "curso gratis de programacion basica"
-})
-const cursoDefinitivoHTMLO = new ({
-    name: "curso definitivo de HTML y CSS"
-})
-const cursoPracticoHTML = new ({
-    name: "curso practico de HTML y CSS"
-})
-
-
-class Student {
+class Student3 {
   constructor({
     name,
     email,
@@ -70,7 +78,7 @@ class Student {
   }
 }
 
-const juan2 = new Student({
+const juan2 = new Student3({
   name: "JuanDC",
   username: "juandc",
   email: "juanito@juanito.com",
@@ -78,7 +86,7 @@ const juan2 = new Student({
   learningPaths: [escuelaWeb,escuelaVgs],
 });
 
-const miguelito2 = new Student({
+const miguelito2 = new Student3({
   name: "Miguelito",
   username: "migelitofeliz",
   email: "miguelito@juanito.com",
