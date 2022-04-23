@@ -1,4 +1,4 @@
-export class PlatziClass {
+class PlatziClass {
     constructor({
         name,
         videoId
@@ -37,10 +37,14 @@ class LearningPath {
 class Course {
     constructor({
         name,
-        classes = []
+        classes = [],
+        isFree = false,
+        lang = "spanish"
     }) {
         this._name = name;//raya al piso indica que no deberia ser llamado desde afuera(privado)
-        this.classes = classes
+        this.classes = classes;
+        this.isFree = isFree;
+        this.lang = lang;
     }
     get name (){
         return this._name;
@@ -56,13 +60,15 @@ class Course {
 }
 //cursos
 const cursoProgBasica = new Course({
-    name: "curso gratis de programacion basica"
+    name: "curso gratis de programacion basica",
+    isFree: true
 });
 const cursoDefinitivoHTMLO = new Course({
     name: "curso definitivo de HTML y CSS"
 });
 const cursoPracticoHTML = new Course({
-    name: "curso practico de HTML y CSS"
+    name: "curso practico de HTML y CSS",
+    lang: "english"
 });
 
 //escuelas
@@ -79,7 +85,7 @@ const escuelaVgs = new LearningPath({
     courses: ["curso unity","curso de unreal"]
 });
 
-class Student3 {
+class StudentMama {
   constructor({
     name,
     email,
@@ -103,7 +109,43 @@ class Student3 {
   }
 }
 
-const juan2 = new Student3({
+class FreeStudent extends StudentMama{
+    constructor(props){
+        super(props)
+    }
+    AproveCourses(newCourse){
+        if(newCourse.isFree){
+            this.approvedCourses.push(newCourse)
+        } else {
+            console.warn("lo sentimos, " + this.name+ ", solo puedes tomar cursos abiertos");
+        }
+    }
+}
+
+class BasicStudent extends StudentMama{
+    constructor(props){
+        super(props)
+    }
+    AproveCourses(newCourse){
+        if(newCourse.lang !== "english"){
+            this.approvedCourses.push(newCourse)
+        } else {
+            console.warn("lo sentimos, " + this.name+ ", no puedes tomar cursos en eingles");
+        }
+    }
+}
+
+class ExpertStudent extends StudentMama{
+    constructor(props){
+        super(props)
+    }
+    AproveCourses(newCourse){
+        this.approvedCourses.push(newCourse);
+
+    }
+}
+
+const juan2 = new FreeStudent({
   name: "JuanDC",
   username: "juandc",
   email: "juanito@juanito.com",
@@ -111,7 +153,7 @@ const juan2 = new Student3({
   learningPaths: [escuelaWeb,escuelaVgs],
 });
 
-const miguelito2 = new Student3({
+const miguelito2 = new BasicStudent({
   name: "Miguelito",
   username: "migelitofeliz",
   email: "miguelito@juanito.com",
