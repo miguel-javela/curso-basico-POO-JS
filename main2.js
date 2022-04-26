@@ -1,3 +1,24 @@
+class Comment {
+    constructor({
+        content,
+        studentName,
+        studentRole = "estudiante"
+    }){
+        this.content = content;
+        this.studentName = studentName;
+        this.studentRole = studentRole;
+        this.content = content;
+        this.likes = 0;
+
+    }
+
+    publicar(){
+        console.log(this.studentName + ' (' + this.studentRole + ")");
+        console.log(this.likes + "likes");
+        console.log(this.content);
+    }
+}
+
 class PlatziClass {
     constructor({
         name,
@@ -107,6 +128,14 @@ class StudentMama {
     this.approvedCourses = approvedCourses;
     this.learningPaths = learningPaths;
   }
+
+  publicarComentario(commentContent){
+      const comment = new Comment({
+          content: commentContent,
+          studentName: this.name
+      });
+      comment.publicar();
+  }
 }
 
 class FreeStudent extends StudentMama{
@@ -145,6 +174,26 @@ class ExpertStudent extends StudentMama{
     }
 }
 
+class TeacherStudent extends StudentMama{
+    constructor(props){
+        super(props)
+    }
+
+    AproveCourses(newCourse){
+        this.approvedCourses.push(newCourse);
+
+    }
+
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+            studentRole: "profesor"
+        });
+        comment.publicar();
+    }
+}
+
 const juan2 = new FreeStudent({
   name: "JuanDC",
   username: "juandc",
@@ -160,3 +209,10 @@ const miguelito2 = new BasicStudent({
   instagram: "migelito_feliz",
   learningPaths: [escuelaWeb,escuelaData],
 });
+
+const fredy = new TeacherStudent({
+    name: "fredy vega",
+    username: "freddiert",
+    email: "fredy@juanito.com",
+    instagram: "freddiert",
+  });
